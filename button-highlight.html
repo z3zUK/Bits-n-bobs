@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Button test</title>
+    <style>
+      html {
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: floralwhite;
+        padding: 2rem;
+      }
+
+      p {
+        padding-bottom: 2rem;
+      }
+
+      button {
+        background-color: seagreen;
+        color: white;
+        padding: 1rem 3rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-radius: 0.25rem;
+        border: 1px solid seagreen;
+        cursor: pointer;
+        position: relative;
+      }
+
+      button::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        bottom: -50%;
+        left: -50%;
+        background: linear-gradient(
+          to bottom,
+          rgba(229, 172, 142, 0),
+          rgba(255, 255, 255, 0.2) 50%,
+          rgba(229, 172, 142, 0)
+        );
+        transform: rotateZ(150deg) translate(-5em, 7.5em);
+        animation: highlighter 5s forwards infinite; /* animation runs every 5secs infinitely */
+      }
+
+      button:hover::after,
+      button:focus::after {
+        animation: none; /* this stops the animation when hovering */
+      }
+
+      button:hover {
+        background-color: darkseagreen;
+      }
+
+      /* the same values at 20% and 100% creates a delay of 4secs betwen animations */
+      @keyframes highlighter {
+        20% {
+          transform: rotateZ(150deg) translate(1em, -9em);
+        }
+        100% {
+          transform: rotateZ(150deg) translate(1em, -9em);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Button highlight effect</h1>
+    <p>A small highlight animation to call attention to a button.</p>
+    <button>Click Me!</button>
+    <br />
+  </body>
+</html>
